@@ -64,7 +64,8 @@ public class LoginController {
                 );
                 break;
             case SUCCESS:
-                getExternalContext().redirect(getExternalContext().getRequestContextPath());
+                getExternalContext().redirect(getExternalContext().getRequestContextPath()
+                    + "/index.xhtml");
         }
     }
 

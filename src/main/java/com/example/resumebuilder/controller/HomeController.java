@@ -18,6 +18,6 @@ public class HomeController {
     public String logout() throws ServletException {
         ExternalContext externalContext = facesContext.getExternalContext();
         ((HttpServletRequest) externalContext.getRequest()).logout();
-        return "/login.xhtml?faces-redirect=true";
+        return "/index.xhtml?faces-redirect=true";
     }
 }

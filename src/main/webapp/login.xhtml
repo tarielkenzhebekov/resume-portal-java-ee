@@ -20,15 +20,20 @@
                   <p:messages id="messages" globalOnly="true"/>
                      <h:panelGrid columns="3" cellpadding="3" style="margin: 0 auto;">
                         <p:outputLabel for="username" value="Username"/>
-                        <p:inputText id="username" value="#{loginController.username}"/>
+                        <p:inputText id="username" value="#{loginController.username}">
+                           <f:validateBean validationGroups="jakarta.validation.groups.Default"/>
+                        </p:inputText>
                         <p:message for="username"/>
 
                         <p:outputLabel for="password" value="Password"/>
-                        <p:inputText id="password" value="#{loginController.password}" type="password"/>
+                        <p:inputText id="password" value="#{loginController.password}" type="password">
+                           <f:validateBean validationGroups="jakarta.validation.groups.Default"/>
+                        </p:inputText>
                         <p:message for="password"/>
 
                         <p:commandButton id="submit" update="@form" value="Login" action="#{loginController.execute()}"
                            ajax="false"/>
+                        <p:commandButton value="Register" action="registration?faces-redirect=true"/>
                      </h:panelGrid>
                </h:form>
             </div>

@@ -1,11 +1,11 @@
 package com.example.resumebuilder.service;
 
+import com.example.resumebuilder.model.ConfirmationToken;
 import com.example.resumebuilder.model.User;
+import com.example.resumebuilder.model.UserProfile;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
-import jakarta.security.enterprise.identitystore.Pbkdf2PasswordHash;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -17,15 +17,8 @@ public class DataService {
     @PersistenceContext(unitName = "resumeUnit")
     private EntityManager entityManager;
 
-    @Inject
-    private Pbkdf2PasswordHash passwordHasher;
-
     @Transactional
-    public User createUser(
-            String userName,
-            String email,
-            String password) {
-        User user = new User(userName, email, passwordHasher.generate(password.toCharArray()));
+    public User saveUser(User user) {
         entityManager.persist(user);
         entityManager.flush();
         return user;
@@ -39,8 +32,22 @@ public class DataService {
                 .findFirst();
     }
 
-//    TODO Remove this method later
     public List<User> getAllUsers() {
-        return entityManager.createQuery("SELECT u FROM User u ORDER BY u.id", User.class).getResultList();
+        return entityManager.createQuery("SELECT u FROM User u", User.class).getResultList();
     }
+
+    @Transactional
+    public UserProfile saveUserProfile(UserProfile userProfile) {
+        entityManager.persist(userProfile);
+        entityManager.flush();
+        return userProfile;
+    }
+
+    @Transactional
+    public ConfirmationToken saveConfirmationToken(ConfirmationToken confirmationToken) {
+        entityManager.persist(confirmationToken);
+        entityManager.flush();
+        return confirmationToken;
+    }
+
 }
