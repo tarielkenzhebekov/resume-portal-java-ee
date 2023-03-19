@@ -12,7 +12,7 @@ import java.util.Optional;
 @ApplicationScoped
 public class ConfirmationTokenService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "resumeUnit")
     private EntityManager entityManager;
 
     public void setConfirmedAt(String token) {

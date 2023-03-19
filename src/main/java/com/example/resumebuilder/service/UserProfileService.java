@@ -9,7 +9,7 @@ import jakarta.transaction.Transactional;
 @ApplicationScoped
 public class UserProfileService {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "resumeUnit")
     private EntityManager entityManager;
 
     @Transactional

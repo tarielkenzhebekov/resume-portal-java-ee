@@ -26,9 +26,10 @@ public class UserService {
     @Inject
     private Pbkdf2PasswordHash passwordHasher;
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "resumeUnit")
     private EntityManager entityManager;
 
+    @Transactional
     public String signUpUser(User user) {
         boolean userExists = getUser(user.getUsername()).isPresent();
 
@@ -39,7 +40,8 @@ public class UserService {
         String encodedPassword = passwordHasher.generate(user.getPassword().toCharArray());
         user.setPassword(encodedPassword);
 
-        saveUser(user);
+        entityManager.persist(user);
+        entityManager.flush();
 
         UserProfile userProfile = new UserProfile();
         userProfile.setUsername(user.getUsername());
@@ -65,13 +67,6 @@ public class UserService {
                                                 "WHERE u.username = :username")
                 .setParameter("username", username)
                 .executeUpdate();
-    }
-
-    @Transactional
-    public User saveUser(User user) {
-        entityManager.persist(user);
-        entityManager.flush();
-        return user;
     }
 
     public Optional<User> getUser(String username) {
