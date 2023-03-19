@@ -1,4 +1,4 @@
-package com.example.resumebuilder;
+package com.example.resumebuilder.config;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.annotation.FacesConfig;

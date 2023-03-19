@@ -2,11 +2,13 @@ package com.example.resumebuilder.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "CONFIRMATION_TOKENS")
-public class ConfirmationToken {
+@NamedQuery(name = "ConfirmationToken.byToken", query = "SELECT c FROM ConfirmationToken c WHERE c.token = :token")
+public class ConfirmationToken implements Serializable {
 
     @Id
     @SequenceGenerator(

@@ -33,8 +33,12 @@
 
                         <p:commandButton id="submit" update="@form" value="Login" action="#{loginController.execute()}"
                            ajax="false"/>
-                        <p:commandButton value="Register" action="registration?faces-redirect=true"/>
+
                      </h:panelGrid>
+               </h:form>
+               <h:form>
+                  <p:commandButton value="Register" action="registration?faces-redirect=true"
+                                   ajax="false"/>
                </h:form>
             </div>
          </div>

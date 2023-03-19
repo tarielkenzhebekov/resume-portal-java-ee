@@ -2,12 +2,13 @@ package com.example.resumebuilder.model;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "USER_PROFILES")
-public class UserProfile {
+public class UserProfile implements Serializable {
 
     @Id
     @SequenceGenerator(
