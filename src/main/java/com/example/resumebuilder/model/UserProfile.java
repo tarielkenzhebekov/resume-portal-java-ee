@@ -8,6 +8,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "USER_PROFILES")
+@NamedQuery(name = "UserProfile.byUsername", query = "SELECT u FROM UserProfile u WHERE u.username = :username")
 public class UserProfile implements Serializable {
 
     @Id
