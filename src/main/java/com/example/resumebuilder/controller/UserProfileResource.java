@@ -37,11 +37,8 @@ public class UserProfileResource {
             @Context HttpServletRequest request,
             @Context HttpServletResponse response) throws IOException {
 
-        if (securityContext.getCallerPrincipal() != null) {
-            templateController.setPrincipalName(securityContext.getCallerPrincipal().getName());
-            if (securityContext.getCallerPrincipal().getName().equals(username)) {
-                templateController.setCurrentUsersProfile(true);
-            }
+        if (securityContext.getCallerPrincipal() != null && securityContext.getCallerPrincipal().getName().equals(username)) {
+            templateController.setCurrentUsersProfile(true);
         }
 
         UserProfile userProfile = userProfileService.getUserProfile(username).orElseThrow(

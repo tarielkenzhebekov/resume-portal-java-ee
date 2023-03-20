@@ -14,16 +14,6 @@ public class TemplateController implements Serializable {
     private UserProfile userProfile;
     private boolean currentUsersProfile;
 
-    String principalName;
-
-    public String getPrincipalName() {
-        return principalName;
-    }
-
-    public void setPrincipalName(String principalName) {
-        this.principalName = principalName;
-    }
-
     public UserProfile getUserProfile() {
         return userProfile;
     }

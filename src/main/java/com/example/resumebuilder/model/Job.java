@@ -31,13 +31,9 @@ public class Job implements Serializable {
     private String designation;
 
     @Column(name = "START_DATE")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    TODO Search for an alternative in Jakarta EE
     private LocalDate startDate;
 
     @Column(name = "END_DATE")
-//    @DateTimeFormat(pattern = "yyyy-MM-dd")
-//    TODO Search for an alternative in Jakarta EE
     private LocalDate endDate;
 
     @Column(name = "CURRENT_JOB")
@@ -62,12 +58,12 @@ public class Job implements Serializable {
         return designation;
     }
 
-    public LocalDate getStartDate() {
-        return startDate;
+    public String getStartDate() {
+        return startDate.getMonth() + " " + startDate.getYear();
     }
 
-    public LocalDate getEndDate() {
-        return endDate;
+    public String getEndDate() {
+        return endDate.getMonth() + " " + endDate.getYear();
     }
 
     public boolean isCurrentJob() {
