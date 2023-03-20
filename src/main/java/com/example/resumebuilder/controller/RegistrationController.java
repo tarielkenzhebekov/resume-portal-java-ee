@@ -2,7 +2,6 @@ package com.example.resumebuilder.controller;
 
 import com.example.resumebuilder.service.RegistrationService;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.faces.application.FacesMessage;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.validation.constraints.NotEmpty;

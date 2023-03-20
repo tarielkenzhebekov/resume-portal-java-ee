@@ -8,7 +8,7 @@ import jakarta.security.enterprise.identitystore.DatabaseIdentityStoreDefinition
 
 @DatabaseIdentityStoreDefinition(
         dataSourceLookup = "jdbc/resumebuilder",
-        callerQuery = "SELECT USER_PASSWORD FROM USERS WHERE USER_USERNAME = ?",
+        callerQuery = "SELECT USER_PASSWORD FROM USERS WHERE USER_USERNAME = ? AND USER_ACTIVE = TRUE",
         groupsQuery = "SELECT USER_GROUP FROM USERS WHERE USER_USERNAME = ?"
 )
 @CustomFormAuthenticationMechanismDefinition(
