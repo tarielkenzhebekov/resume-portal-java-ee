@@ -45,8 +45,7 @@ public class UserProfileResource {
                 () -> new IllegalStateException("Wrong URL"));
         templateController.setUserProfile(userProfile);
 
-//        TODO Display a template according to the user's preference
-        String page = "/template-2.xhtml";
+        String page = "/template-" + userProfile.getTheme() + ".xhtml";
         String contextPath = request.getContextPath();
         response.sendRedirect(contextPath + page);
         return Response.status(Response.Status.ACCEPTED).build();

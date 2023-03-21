@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+<f:view>
+    <h:head>
+        <title>Resume</title>
+
+        <meta name="viewport" content="width=device-width"/>
+        <meta name="description" content="The Curriculum Vitae of Joe Bloggs."/>
+
+        <link type="text/css" rel="stylesheet" href="./static/css/style-1.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Rokkitt:400,700|Lato:400,300' rel='stylesheet' type='text/css'/>
+    </h:head>
+    <h:body id="top">
+        <div id="cv" class="instaFade">
+            <div class="mainDetails">
+
+                <div id="name">
+                    <h1 class="quickFade delayTwo edit">
+                        <span><h:outputText value="#{templateController.userProfile.firstName}"/></span>
+                        <span><h:outputText value="#{templateController.userProfile.lastName}"/></span>
+                    </h1>
+                    <h:link value = "Edit" outcome = "edit" rendered="#{templateController.currentUsersProfile}" />
+                    <h2 class="quickFade delayThree"><h:outputText value="#{templateController.userProfile.designation}"/></h2>
+                </div>
+
+                <div id="contactDetails" class="quickFade delayFour">
+                    <ul>
+                        <li><span><h:outputText value="#{templateController.userProfile.email}"/></span></li>
+                        <li><span><h:outputText value="#{templateController.userProfile.phone}"/></span></li>
+                    </ul>
+                </div>
+                <div class="clear"></div>
+            </div>
+
+            <div id="mainArea" class="quickFade delayFive">
+                <section>
+                    <article>
+                        <div class="sectionTitle">
+                            <h1>Personal Profile</h1>
+                        </div>
+
+                        <div class="sectionContent">
+                            <p><h:outputText value="#{templateController.userProfile.summary}"/></p>
+                        </div>
+                    </article>
+                    <div class="clear"></div>
+                </section>
+
+
+                <section>
+                    <div class="sectionTitle">
+                        <h1>Work Experience</h1>
+                    </div>
+
+                    <div class="sectionContent">
+                        <c:forEach items="#{templateController.userProfile.jobs}" var="job">
+                            <article>
+                                <h2><span><h:outputText value="#{job.designation}"/></span> at <span><h:outputText value="#{job.company}"/></span></h2>
+                                <p class="subDetails">
+                                    <span><h:outputText value="#{job.getStartDate()}"/></span>
+                                    &mdash;
+                                    <span><h:outputText value="#{job.currentJob ? 'Present' : job.getEndDate()}"/></span>
+                                </p>
+                                <ul>
+                                    <c:forEach items="#{job.responsibilities}" var="responsibility">
+                                        <li><h:outputText value="#{responsibility}"/></li>
+                                    </c:forEach>
+                                </ul>
+                                <p></p>
+                            </article>
+                        </c:forEach>
+                    </div>
+                    <div class="clear"></div>
+                </section>
+
+
+                <section>
+                    <div class="sectionTitle">
+                        <h1>Key Skills</h1>
+                    </div>
+
+                    <div class="sectionContent">
+                        <ul class="keySkills">
+                            <c:forEach items="#{templateController.userProfile.skills}" var="skill">
+                                <li><h:outputText value="#{skill}"/></li>
+                            </c:forEach>
+                        </ul>
+                    </div>
+                    <div class="clear"></div>
+                </section>
+
+
+                <section>
+                    <div class="sectionTitle">
+                        <h1>Education</h1>
+                    </div>
+
+                    <div class="sectionContent">
+                        <c:forEach items="#{templateController.userProfile.educations}" var="education">
+                            <article>
+                                <h2><h:outputText value="#{education.college}"/></h2>
+                                <p class="subDetails"><h:outputText value="#{education.qualification}"/></p>
+                                <p><h:outputText value="#{education.major}"/></p>
+                            </article>
+                        </c:forEach>
+                    </div>
+                    <div class="clear"></div>
+                </section>
+
+            </div>
+        </div>
+        <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+        </script>
+        <script type="text/javascript">
+            var pageTracker = _gat._getTracker("UA-3753241-1");
+            pageTracker._initData();
+            pageTracker._trackPageview();
+        </script>
+    </h:body>
+</f:view>
+</html>
