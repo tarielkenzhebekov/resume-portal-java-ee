@@ -8,10 +8,6 @@
       xmlns:p="http://primefaces.org/ui">
 <f:view>
     <h:outputLabel value="Hello, world"/>
-    <h:form>
-        <p:commandButton value="edit" action="edit?faces-redirect=true"/>
-        <p:commandButton value="Profile" action="profile?faces-redirect=true"/>
-        <p:commandButton value="Logout" action="#{homeController.logout()}"/>
-    </h:form>
+    <p><h:outputLink value="http://localhost:8080/resume/api/edit">Edit</h:outputLink></p>
 </f:view>
 </html>

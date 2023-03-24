@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @RequestScoped
 @Named
-public class HomeController {
+public class LogoutController {
 
     @Inject
     private FacesContext facesContext;
@@ -20,6 +20,5 @@ public class HomeController {
         externalContext.invalidateSession();
         ((HttpServletRequest) externalContext.getRequest()).logout();
         return "/index.xhtml?faces-redirect=true";
-
     }
 }

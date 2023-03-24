@@ -64,8 +64,7 @@ public class LoginController {
                 );
                 break;
             case SUCCESS:
-                getExternalContext().redirect(getExternalContext().getRequestContextPath()
-                    + "/index.xhtml");
+                getExternalContext().redirect("http://localhost:8080/resume/api/edit");
         }
     }
 

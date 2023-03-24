@@ -39,6 +39,8 @@ public class UserProfileResource {
 
         if (securityContext.getCallerPrincipal() != null && securityContext.getCallerPrincipal().getName().equals(username)) {
             templateController.setCurrentUsersProfile(true);
+        } else {
+            templateController.setCurrentUsersProfile(false);
         }
 
         UserProfile userProfile = userProfileService.getUserProfile(username).orElseThrow(

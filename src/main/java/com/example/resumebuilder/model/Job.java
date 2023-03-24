@@ -58,12 +58,12 @@ public class Job implements Serializable {
         return designation;
     }
 
-    public String getStartDate() {
-        return startDate.getMonth() + " " + startDate.getYear();
+    public LocalDate getStartDate() {
+        return startDate;
     }
 
-    public String getEndDate() {
-        return endDate.getMonth() + " " + endDate.getYear();
+    public LocalDate getEndDate() {
+        return endDate;
     }
 
     public boolean isCurrentJob() {
@@ -72,5 +72,33 @@ public class Job implements Serializable {
 
     public List<String> getResponsibilities() {
         return responsibilities;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void setDesignation(String designation) {
+        this.designation = designation;
+    }
+
+    public void setStartDate(LocalDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(LocalDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setCurrentJob(boolean currentJob) {
+        this.currentJob = currentJob;
+    }
+
+    public void setResponsibilities(List<String> responsibilities) {
+        this.responsibilities = responsibilities;
     }
 }

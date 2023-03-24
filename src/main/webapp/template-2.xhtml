@@ -33,7 +33,8 @@
                         </h1>
                         <div class="edit">
                             <h2><h:outputText value="#{templateController.userProfile.designation}"/></h2>
-                            <h:link value = "Edit" outcome = "edit" rendered="#{templateController.currentUsersProfile}" />
+<!--                            TODO Fix the bug-->
+                            <h:outputLink value="http://localhost:8080/resume/api/edit" rendered="#{templateController.currentUsersProfile}">Edit</h:outputLink>
                         </div>
                     </div>
 

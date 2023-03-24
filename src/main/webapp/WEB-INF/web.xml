@@ -18,8 +18,8 @@
     <security-constraint>
         <display-name>User Role</display-name>
         <web-resource-collection>
-            <web-resource-name>All App Pages</web-resource-name>
-            <url-pattern>/edit.xhtml</url-pattern>
+            <web-resource-name>Edit</web-resource-name>
+            <url-pattern>/api/edit</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <role-name>USER</role-name>

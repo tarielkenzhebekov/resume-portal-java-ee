@@ -6,7 +6,6 @@ import jakarta.inject.Named;
 
 import java.io.Serializable;
 
-//@RequestScoped
 @SessionScoped
 @Named
 public class TemplateController implements Serializable {
