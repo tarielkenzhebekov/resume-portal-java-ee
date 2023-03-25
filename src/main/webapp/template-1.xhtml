@@ -62,9 +62,9 @@
                             <article>
                                 <h2><span><h:outputText value="#{job.designation}"/></span> at <span><h:outputText value="#{job.company}"/></span></h2>
                                 <p class="subDetails">
-                                    <span><h:outputText value="#{job.getStartDateString()}"/></span>
+                                    <span><h:outputText value="#{job.getStartDate()}"/></span>
                                     &mdash;
-                                    <span><h:outputText value="#{job.currentJob ? 'Present' : job.getEndDateString()}"/></span>
+                                    <span><h:outputText value="#{job.currentJob ? 'Present' : job.getEndDate()}"/></span>
                                 </p>
                                 <ul>
                                     <c:forEach items="#{job.responsibilities}" var="responsibility">

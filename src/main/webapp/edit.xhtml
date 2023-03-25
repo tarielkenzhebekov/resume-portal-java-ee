@@ -15,9 +15,22 @@
             <h1 style="display: inline;"><h:outputText value="#{editController.userProfile.username}"/>'s Profile</h1>
             <span style="margin-left: 20px;">
                 <h:outputLink value="http://localhost:8080/resume/api/view/#{editController.userProfile.username}" target="_blank">View My Resume</h:outputLink>
-                |
+                <input type="hidden" value="http://localhost:8080/resume/api/view/#{editController.userProfile.username}" id="hiddenLink"/>
+                <button class="btn" onclick="handleClick()">Copy Link</button>
+                <script>
+                    function handleClick() {
+                        /* Save value of myText to input variable */
+                        var input = document.getElementById("hiddenLink").value;
+
+                        /* Copy the text inside the text field */
+                        navigator.clipboard.writeText(input);
+
+                        alert("Resume link copied!");
+                    }
+                </script></span>
+            <span style="margin-left: 100px;">
                 <h:link outcome="#{logoutController.logout()}">Logout</h:link>
-            </span><br/>
+            </span><br/><br/>
             <h:form id="themeForm">
                 <h:dataTable id="themeTable" value="#{editController.userProfile}" var="userProfile">
 

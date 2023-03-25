@@ -1,5 +1,6 @@
 package com.example.resumebuilder.controller;
 
+import com.example.resumebuilder.model.UserProfile;
 import com.example.resumebuilder.service.UserProfileService;
 import jakarta.inject.Inject;
 import jakarta.security.enterprise.SecurityContext;
@@ -31,10 +32,10 @@ public class EditResource {
             @Context HttpServletRequest request,
             @Context HttpServletResponse response) throws IOException {
 
-//        String username = securityContext.getCallerPrincipal().getName();
-//        UserProfile userProfile = userProfileService.getUserProfile(username).get();
-//
-//        editController.setUserProfile(userProfile);
+        String username = securityContext.getCallerPrincipal().getName();
+        UserProfile userProfile = userProfileService.getUserProfile(username).get();
+
+        editController.setUserProfile(userProfile);
         String contextPath = request.getContextPath();
         response.sendRedirect(contextPath + "/edit.xhtml");
         return Response.status(Response.Status.ACCEPTED).build();

@@ -30,7 +30,7 @@ public class UserProfile implements Serializable {
     @Column(name = "THEME")
     private int theme;
 
-    @Column(name = "SUMMARY")
+    @Column(name = "SUMMARY", length = 1000)
     private String summary;
 
     @Column(name = "FIRST_NAME")

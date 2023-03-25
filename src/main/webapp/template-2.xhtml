@@ -85,9 +85,9 @@
                                         <h2><h:outputText value="#{job.company}"/></h2>
                                         <h3><h:outputText value="#{job.designation}"/></h3>
                                         <h4>
-                                            <h:outputText value="#{job.getStartDateString()}"/>
+                                            <h:outputText value="#{job.getStartDate()}"/>
                                             &mdash;
-                                            <h:outputText value="#{job.currentJob ? 'Present' : job.getEndDateString()}"/>
+                                            <h:outputText value="#{job.currentJob ? 'Present' : job.getEndDate()}"/>
                                         </h4>
                                         <ul>
                                             <c:forEach items="#{job.responsibilities}" var="responsibility">
