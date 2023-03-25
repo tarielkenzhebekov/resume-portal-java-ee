@@ -16,7 +16,7 @@ public class UserProfileService {
 
     @Transactional
     public UserProfile saveUserProfile(UserProfile userProfile) {
-        entityManager.persist(userProfile);
+        entityManager.merge(userProfile);
         entityManager.flush();
         return userProfile;
     }

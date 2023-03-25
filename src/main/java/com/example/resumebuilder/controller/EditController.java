@@ -2,6 +2,7 @@ package com.example.resumebuilder.controller;
 
 import com.example.resumebuilder.model.Education;
 import com.example.resumebuilder.model.Job;
+import com.example.resumebuilder.model.Skill;
 import com.example.resumebuilder.model.UserProfile;
 import com.example.resumebuilder.service.UserProfileService;
 import jakarta.annotation.PostConstruct;
@@ -9,6 +10,7 @@ import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.security.enterprise.SecurityContext;
+import jakarta.transaction.Transactional;
 
 import java.io.Serializable;
 
@@ -46,7 +48,7 @@ public class EditController implements Serializable {
         userProfile.getEducations().remove(education);
     }
 
-    public void remove(String skill) {
+    public void remove(Skill skill) {
         userProfile.getSkills().remove(skill);
     }
 
@@ -59,10 +61,10 @@ public class EditController implements Serializable {
     }
 
     public void addSkill() {
-        userProfile.getSkills().add("");
+        userProfile.getSkills().add(new Skill());
     }
 
-//TODO No db changes, fix it
+    @Transactional
     public void save() {
         userProfileService.saveUserProfile(userProfile);
     }

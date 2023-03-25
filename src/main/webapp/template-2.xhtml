@@ -68,7 +68,7 @@
 
                                 <c:forEach items="#{templateController.userProfile.skills}" var="skill">
                                     <div class="talent" >
-                                        <h2><h:outputText value="#{skill}"/></h2>
+                                        <h2><h:outputText value="#{skill.skillName}"/></h2>
                                     </div>
                                 </c:forEach>
 
@@ -87,9 +87,9 @@
                                         <h2><h:outputText value="#{job.company}"/></h2>
                                         <h3><h:outputText value="#{job.designation}"/></h3>
                                         <h4>
-                                            <h:outputText value="#{job.getStartDate()}"/>
+                                            <h:outputText value="#{job.getStartDateString()}"/>
                                             &mdash;
-                                            <h:outputText value="#{job.currentJob ? 'Present' : job.getEndDate()}"/>
+                                            <h:outputText value="#{job.currentJob ? 'Present' : job.getEndDateString()}"/>
                                         </h4>
                                         <ul>
                                             <c:forEach items="#{job.responsibilities}" var="responsibility">

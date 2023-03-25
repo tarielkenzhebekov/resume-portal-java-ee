@@ -62,9 +62,12 @@ public class UserProfile implements Serializable {
     @JoinColumn(name = "USER_PROFILE_ID")
     List<Education> educations = new ArrayList<>();
 
-    @Column(name = "SKILLS")
-    @ElementCollection(targetClass = String.class)
-    List<String> skills = new ArrayList<>();
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @JoinColumn(name = "USER_PROFILE_ID")
+    List<Skill> skills = new ArrayList<>();
 
     public UserProfile() {
     }
@@ -157,11 +160,11 @@ public class UserProfile implements Serializable {
         this.educations = educations;
     }
 
-    public List<String> getSkills() {
+    public List<Skill> getSkills() {
         return skills;
     }
 
-    public void setSkills(List<String> skills) {
+    public void setSkills(List<Skill> skills) {
         this.skills = skills;
     }
 }

@@ -10,7 +10,6 @@
         <h:head>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <title>Edit Profile</title>
-            <link rel="stylesheet" type="text/css" href="./static/css/style.css" media="all" />
         </h:head>
         <h:body>
             <h1><h:outputText value="#{editController.userProfile.username}"/>'s Profile</h1>
@@ -84,7 +83,7 @@
                         <f:facet name="header">
                             <h:outputText value="Current Job"/>
                         </f:facet>
-                        <h:inputText type="checkbox" value="#{job.currentJob}"/>
+                        <p:selectBooleanCheckbox value="#{job.currentJob}"/>
                     </h:column>
                     <h:column>
                         <h:commandButton id="remove_job" value="delete" action="#{editController.remove(job)}"
@@ -93,12 +92,12 @@
                         </h:commandButton>
                     </h:column>
                 </h:dataTable>
+                <h:commandButton value="Save Job Changes" action="#{editController.save}"
+                                 onclick="return alert('Jobs saved')"/>
             </h:form>
-            <h:commandButton style="float: left" value="Add job" action="#{editController.addJob}">
+            <h:commandButton value="Add job" action="#{editController.addJob}">
                 <f:ajax execute="experienceForm" render="experienceForm" />
             </h:commandButton>
-            <h:commandButton style="float: left" value="Save Job Changes" action="#{editController.save}"
-                             onclick="return alert('Jobs saved')"/>
 
             <h2>Education</h2>
             <h:form id="educationForm">
@@ -128,12 +127,12 @@
                         </h:commandButton>
                     </h:column>
                 </h:dataTable>
+                <h:commandButton value="Save Education Changes" action="#{editController.save}"
+                                 onclick="return alert('Educations saved')"/>
             </h:form>
-            <h:commandButton style="float: left" value="Add education" action="#{editController.addEducation}">
+            <h:commandButton value="Add education" action="#{editController.addEducation}">
                 <f:ajax execute="educationForm" render="educationForm" />
             </h:commandButton>
-            <h:commandButton style="float: left" value="Save Education Changes" action="#{editController.save}"
-                             onclick="return alert('Educations saved')"/>
 
             <h2>Skills</h2>
             <h:form id="skillForm">
@@ -142,7 +141,7 @@
                         <f:facet name="header">
                             <h:outputText value="Skill"/>
                         </f:facet>
-                        <p:inputText value="#{skill}"/>
+                        <p:inputText value="#{skill.skillName}"/>
                     </h:column>
                     <h:column>
                         <h:commandButton id="remove_skill" value="delete" action="#{editController.remove(skill)}"
@@ -151,12 +150,13 @@
                         </h:commandButton>
                     </h:column>
                 </h:dataTable>
+                <h:commandButton value="Save Skills Changes" action="#{editController.save}"
+                                 onclick="return alert('Skills saved')"/>
             </h:form>
-            <h:commandButton style="float: left" value="Add skill" action="#{editController.addSkill}">
+            <h:commandButton value="Add skill" action="#{editController.addSkill}">
                 <f:ajax execute="skillForm" render="skillForm" />
             </h:commandButton>
-            <h:commandButton style="float: left" value="Save Skills Changes" action="#{editController.save}"
-                             onclick="return alert('Skills saved')"/>
+
         </h:body>
     </f:view>
 </html>

@@ -48,4 +48,20 @@ public class Education implements Serializable {
     public String getMajor() {
         return major;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setCollege(String college) {
+        this.college = college;
+    }
+
+    public void setQualification(String qualification) {
+        this.qualification = qualification;
+    }
+
+    public void setMajor(String major) {
+        this.major = major;
+    }
 }

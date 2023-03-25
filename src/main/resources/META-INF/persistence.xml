@@ -10,6 +10,11 @@
         <properties>
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
             <property name="jakarta.persistence.sql-load-script-source" value="META-INF/defaultdata.sql"/>
+            <property name="eclipselink.weaving" value="static" />
+            <property name="eclipselink.logging.level.sql" value="FINEST" />
+            <property name="eclipselink.logging.level" value="FINEST" />
+            <property name="eclipselink.logging.level.cache" value="FINEST" />
+            <property name="eclipselink.logging.parameters" value="true" />
         </properties>
     </persistence-unit>
 </persistence>

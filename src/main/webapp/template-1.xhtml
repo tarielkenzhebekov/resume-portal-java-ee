@@ -25,7 +25,6 @@
                         <span><h:outputText value="#{templateController.userProfile.firstName}"/></span>
                         <span><h:outputText value="#{templateController.userProfile.lastName}"/></span>
                     </h1>
-<!--                    TODO Fix the bug-->
                     <h:outputLink value="http://localhost:8080/resume/api/edit" rendered="#{templateController.currentUsersProfile}">Edit</h:outputLink>
                     <h2 class="quickFade delayThree"><h:outputText value="#{templateController.userProfile.designation}"/></h2>
                 </div>
@@ -64,9 +63,9 @@
                             <article>
                                 <h2><span><h:outputText value="#{job.designation}"/></span> at <span><h:outputText value="#{job.company}"/></span></h2>
                                 <p class="subDetails">
-                                    <span><h:outputText value="#{job.getStartDate()}"/></span>
+                                    <span><h:outputText value="#{job.getStartDateString()}"/></span>
                                     &mdash;
-                                    <span><h:outputText value="#{job.currentJob ? 'Present' : job.getEndDate()}"/></span>
+                                    <span><h:outputText value="#{job.currentJob ? 'Present' : job.getEndDateString()}"/></span>
                                 </p>
                                 <ul>
                                     <c:forEach items="#{job.responsibilities}" var="responsibility">
@@ -89,7 +88,7 @@
                     <div class="sectionContent">
                         <ul class="keySkills">
                             <c:forEach items="#{templateController.userProfile.skills}" var="skill">
-                                <li><h:outputText value="#{skill}"/></li>
+                                <li><h:outputText value="#{skill.skillName}"/></li>
                             </c:forEach>
                         </ul>
                     </div>

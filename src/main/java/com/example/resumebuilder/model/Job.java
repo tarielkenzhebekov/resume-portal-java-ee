@@ -66,6 +66,14 @@ public class Job implements Serializable {
         return endDate;
     }
 
+    public String getStartDateString() {
+        return startDate.getMonth() + " " + startDate.getYear();
+    }
+
+    public String getEndDateString() {
+        return endDate.getMonth() + " " + endDate.getYear();
+    }
+
     public boolean isCurrentJob() {
         return currentJob;
     }
