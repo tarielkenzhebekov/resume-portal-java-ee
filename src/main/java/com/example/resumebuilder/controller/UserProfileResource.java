@@ -21,9 +21,6 @@ import java.io.IOException;
 public class UserProfileResource {
 
     @Inject
-    private SecurityContext securityContext;
-
-    @Inject
     private TemplateController templateController;
 
     @Inject
@@ -36,12 +33,6 @@ public class UserProfileResource {
             @PathParam("username") String username,
             @Context HttpServletRequest request,
             @Context HttpServletResponse response) throws IOException {
-
-        if (securityContext.getCallerPrincipal() != null && securityContext.getCallerPrincipal().getName().equals(username)) {
-            templateController.setCurrentUsersProfile(true);
-        } else {
-            templateController.setCurrentUsersProfile(false);
-        }
 
         UserProfile userProfile = userProfileService.getUserProfile(username).orElseThrow(
                 () -> new IllegalStateException("Wrong URL"));

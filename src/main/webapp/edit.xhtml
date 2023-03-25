@@ -12,40 +12,80 @@
             <title>Edit Profile</title>
         </h:head>
         <h:body>
-            <h1><h:outputText value="#{editController.userProfile.username}"/>'s Profile</h1>
+            <h1 style="display: inline;"><h:outputText value="#{editController.userProfile.username}"/>'s Profile</h1>
+            <span style="margin-left: 20px;">
+                <h:outputLink value="http://localhost:8080/resume/api/view/#{editController.userProfile.username}" target="_blank">View My Resume</h:outputLink>
+                |
+                <h:link outcome="#{logoutController.logout()}">Logout</h:link>
+            </span><br/>
+            <h:form id="themeForm">
+                <h:dataTable id="themeTable" value="#{editController.userProfile}" var="userProfile">
 
-<!--            <form action="#">-->
-<!--&lt;!&ndash;                    TODO Dropdown list&ndash;&gt;-->
-<!--&lt;!&ndash;                <div class="form-group">&ndash;&gt;-->
-<!--&lt;!&ndash;                    <label for="theme"><strong>Select your profile theme:</strong></label>&ndash;&gt;-->
-<!--&lt;!&ndash;                    <select id="theme" th:field="*{theme}">&ndash;&gt;-->
-<!--&lt;!&ndash;                    </select>&ndash;&gt;-->
-<!--&lt;!&ndash;                </div>&ndash;&gt;-->
-<!--                <div class="form-group">-->
-<!--                    <label for="firstName"><strong>First Name:</strong></label>-->
-<!--                    <h:inputText id="firstName" class="form-control" value="#{editController.userProfile.firstName}"/>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="lastName"><strong>Last Name:</strong></label>-->
-<!--                    <h:inputText id="lastName" class="form-control" value="#{editController.userProfile.lastName}"/>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="designation"><strong>Designation:</strong></label>-->
-<!--                    <h:inputText id="designation" class="form-control" value="#{editController.userProfile.designation}"/>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="email"><strong>Email:</strong></label>-->
-<!--                    <h:inputText id="email" class="form-control" value="#{editController.userProfile.email}"/>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="phone"><strong>Phone Number:</strong></label>-->
-<!--                    <h:inputText id="phone" class="form-control" value="#{editController.userProfile.phone}"/>-->
-<!--                </div>-->
-<!--                <div class="form-group">-->
-<!--                    <label for="summary"><strong>Summary:</strong></label>-->
-<!--                    <h:inputTextarea id="summary" class="form-control" value="#{editController.userProfile.summary}"/>-->
-<!--                </div>-->
-<!--            </form>-->
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Theme"/>
+                        </f:facet>
+                        <p:selectOneMenu id="option" value="#{userProfile.theme}">
+                            <f:selectItem itemLabel="Theme 1" itemValue="1"/>
+                            <f:selectItem itemLabel="Theme 2" itemValue="2"/>
+                        </p:selectOneMenu>
+                    </h:column>
+                </h:dataTable>
+                <h:commandButton value="Save Theme" action="#{editController.save}"
+                                 onclick="return alert('Theme saved')"/>
+            </h:form><br/>
+
+            <h:form id="summaryForm">
+                <h:dataTable id="summaryTable" value="#{editController.userProfile}" var="userProfile">
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Summary"/>
+                        </f:facet>
+                        <h:inputTextarea value="#{userProfile.summary}" rows="6" cols="50"/>
+                    </h:column>
+                </h:dataTable>
+                <h:commandButton value="Save Summary" action="#{editController.save}"
+                                 onclick="return alert('Summary saved')"/>
+            </h:form>
+
+            <h2>Basic Info</h2>
+            <h:form id="infoForm">
+                <h:dataTable id="infoTable" value="#{editController.userProfile}" var="userProfile">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="First Name"/>
+                        </f:facet>
+                        <p:inputText value="#{userProfile.firstName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Last Name"/>
+                        </f:facet>
+                        <p:inputText value="#{userProfile.lastName}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Designation"/>
+                        </f:facet>
+                        <p:inputText value="#{userProfile.designation}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Email"/>
+                        </f:facet>
+                        <p:inputText value="#{userProfile.email}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Phone"/>
+                        </f:facet>
+                        <p:inputText value="#{userProfile.phone}"/>
+                    </h:column><br/>
+                </h:dataTable>
+                <h:commandButton value="Save Basic Info" action="#{editController.save}"
+                                 onclick="return alert('Basic Info saved')"/>
+            </h:form>
 
             <h2>Experience</h2>
             <h:form id="experienceForm">
@@ -92,7 +132,7 @@
                         </h:commandButton>
                     </h:column>
                 </h:dataTable>
-                <h:commandButton value="Save Job Changes" action="#{editController.save}"
+                <h:commandButton value="Save Experience" action="#{editController.save}"
                                  onclick="return alert('Jobs saved')"/>
             </h:form>
             <h:commandButton value="Add job" action="#{editController.addJob}">
@@ -127,7 +167,7 @@
                         </h:commandButton>
                     </h:column>
                 </h:dataTable>
-                <h:commandButton value="Save Education Changes" action="#{editController.save}"
+                <h:commandButton value="Save Education" action="#{editController.save}"
                                  onclick="return alert('Educations saved')"/>
             </h:form>
             <h:commandButton value="Add education" action="#{editController.addEducation}">
@@ -150,7 +190,7 @@
                         </h:commandButton>
                     </h:column>
                 </h:dataTable>
-                <h:commandButton value="Save Skills Changes" action="#{editController.save}"
+                <h:commandButton value="Save Skills" action="#{editController.save}"
                                  onclick="return alert('Skills saved')"/>
             </h:form>
             <h:commandButton value="Add skill" action="#{editController.addSkill}">
