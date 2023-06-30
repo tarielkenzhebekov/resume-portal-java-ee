@@ -1,5 +1,6 @@
-package com.example.resumebuilder.controller;
+package com.example.resumebuilder.resources;
 
+import com.example.resumebuilder.controller.EditController;
 import com.example.resumebuilder.model.UserProfile;
 import com.example.resumebuilder.service.UserProfileService;
 import jakarta.inject.Inject;

@@ -1,10 +1,10 @@
-package com.example.resumebuilder.controller;
+package com.example.resumebuilder.resources;
 
+import com.example.resumebuilder.controller.TemplateController;
 import com.example.resumebuilder.model.UserProfile;
 import com.example.resumebuilder.service.UserProfileService;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
-import jakarta.security.enterprise.SecurityContext;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.ws.rs.GET;

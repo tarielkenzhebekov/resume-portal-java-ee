@@ -1,4 +1,4 @@
-package com.example.resumebuilder.controller;
+package com.example.resumebuilder.resources;
 
 import com.example.resumebuilder.service.RegistrationService;
 import jakarta.enterprise.context.RequestScoped;
